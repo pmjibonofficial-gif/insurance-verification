@@ -1,9 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>StudyWings Document Verification</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prime Insurance | Document Verification</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 22px 20px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-top: 6px;
+}
+
+.container {
+    max-width: 650px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.description {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #111827;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.note {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.footer {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 13px;
+    margin-top: 40px;
+}
+</style>
 </head>
+
 <body>
-    <p>StudyWings Document Verification</p>
+
+<div class="header">
+    <div class="logo">PRIME INSURANCE</div>
+    <div class="subtitle">Official Document Verification Portal</div>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Verify a Document</h1>
+
+        <p class="description">
+            Enter the document verification number shown on your
+            Prime Insurance document.
+        </p>
+
+        <input
+            type="text"
+            id="documentId"
+            placeholder="Example: SW-2026-001"
+        >
+
+        <button onclick="verifyDocument()">
+            VERIFY DOCUMENT
+        </button>
+
+        <p class="note">
+            You can also scan the QR code printed on the document
+            to verify it instantly.
+        </p>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Prime Insurance. Official Verification Portal.
+    </div>
+
+</div>
+
+<script>
+function verifyDocument() {
+
+    const id = document.getElementById("documentId").value.trim();
+
+    if (!id) {
+        alert("Please enter a document verification number.");
+        return;
+    }
+
+    window.location.href =
+        "verify.html?id=" + encodeURIComponent(id);
+}
+</script>
+
 </body>
 </html>
