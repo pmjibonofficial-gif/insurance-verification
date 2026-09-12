@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Document Verification | Prime Insurance</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+.header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+    padding: 22px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-top: 6px;
+}
+
+.container {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 35px 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.status {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.check {
+    font-size: 50px;
+}
+
+.verified {
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.status-text {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+.info {
+    border-top: 1px solid #e5e7eb;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.label {
+    color: #6b7280;
+}
+
+.value {
+    font-weight: 600;
+    text-align: right;
+}
+
+.pdf-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: #111827;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 25px;
+    font-weight: 600;
+}
+
+.warning {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 13px;
+    margin-top: 30px;
+}
+
+@media(max-width:600px) {
+    .row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .value {
+        text-align: left;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">PRIME INSURANCE</div>
+    <div class="subtitle">Official Document Verification Portal</div>
+</div>
+
+<div class="container">
+
+    <div class="card" id="verificationCard">
+
+        <div class="status">
+            <div class="check">✓</div>
+            <div class="verified">DOCUMENT VERIFIED</div>
+            <div class="status-text">
+                This document has been successfully verified.
+            </div>
+        </div>
+
+        <div class="info">
+
+            <div class="row">
+                <div class="label">Verification Number</div>
+                <div class="value" id="documentId">---</div>
+            </div>
+
+            <div class="row">
+                <div class="label">Document Type</div>
+                <div class="value">Insurance Certificate</div>
+            </div>
+
+            <div class="row">
+                <div class="label">Status</div>
+                <div class="value">ACTIVE</div>
+            </div>
+
+            <div class="row">
+                <div class="label">Issue Date</div>
+                <div class="value">12 September 2026</div>
+            </div>
+
+        </div>
+
+        <a
+            class="pdf-button"
+            id="pdfLink"
+            href="#"
+            target="_blank"
+        >
+            VIEW ORIGINAL PDF
+        </a>
+
+    </div>
+
+    <div class="card warning" id="warning">
+        <h2>Document Not Found</h2>
+        <p>
+            The verification number provided is not recognised.
+        </p>
+    </div>
+
+    <div class="footer">
+        © 2026 Prime Insurance. Official Verification Portal.
+    </div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const validDocuments = {
+    "SW-2026-001": {
+        pdf: "sw-2026-001.pdf",
+        type: "Insurance Certificate",
+        status: "ACTIVE",
+        date: "12 September 2026"
+    }
+};
+
+if (id && validDocuments[id]) {
+
+    const documentData = validDocuments[id];
+
+    document.getElementById("documentId").textContent = id;
+
+    document.getElementById("pdfLink").href =
+        documentData.pdf;
+
+} else {
+
+    document.getElementById("verificationCard").style.display = "none";
+
+    document.getElementById("warning").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
